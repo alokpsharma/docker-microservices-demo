@@ -1,7 +1,5 @@
 # Microservics Architecture
 
-###  written by Hitesh Joshi - sendmailtojoshi@gmail.com
-
 
 This is proof of concept application where I am trying to build a very basic Shopping cart using microservices, the main intent is to setup microservices properly.
 
@@ -51,7 +49,7 @@ Look at Load Balancing with Multiple regions , zones - https://cloud.spring.io/s
     config:
       server:
         git:
-          uri: git@github.com:hiteshjoshi1/microservice-docker-cart-config.git
+          uri: git@github.com:alokpsharma/microservice-docker-cart-config.git
 
 - If you are building it in docker, this configuration is downloaded and then used. For some reason i was not able to connect config project with  github from docker even after setting up ssh.    
 
@@ -151,7 +149,7 @@ Checking the cloud config coming from the config server deployed on the port 555
 
 The project uses the config defined here
 ```
-https://github.com/hiteshjoshi1/microservice-docker-cart-config
+https://github.com/alokpsharma/microservice-docker-cart-config
 
 ```
 
@@ -206,7 +204,7 @@ To build and package a jar to target folder :<BR>
 
 
 Copy all microservices jar to the place which is shared with the volume - Ideally this should be done througha CI JOb (TODO) <br>
-<code>cp customer-0.0.1-SNAPSHOT.jar.original /home/hitesh/jarloc</code>
+<code>cp customer-0.0.1-SNAPSHOT.jar.original /home/alok/jarloc</code>
 
 
 
@@ -216,7 +214,7 @@ once you have all your jars in jarloc (Jar location), you can bring all the micr
 
 
 The Java 8 base image used to build the microservice containers is also checked in dockerhub and can be seprately downloaded as
-<div><b><code>docker pull hiteshjoshi1/microservice-docker-cart-example</code></b></div
+<div><b><code>docker pull alokpsharma/microservice-docker-cart-example</code></b></div
 
 The base image can be built using
 
