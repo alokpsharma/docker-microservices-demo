@@ -1,0 +1,67 @@
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Cart</a>
+  <!-- Responsive Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngFor="let category of primaryCategories">
+        <a class="nav-link" (mouseover)="showCategory(category.categoryId)" routerLink="/{{category.categoryName}}" routerLinkActive="active">
+          <i class="fa d-inline fa-lg fa-bookmark-o"></i>
+          {{category.categoryName}}
+        </a>
+      </li>
+    <li>
+      
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      
+    </li>  
+
+
+
+
+    </ul>
+    
+    <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item" (mouseleave)="hideCategories()">
+            <a class="nav-link" routerLink="/signin" routerLinkActive="active">
+              <i class="fa d-inline fa-lg fa-bookmark-o"></i>Sign In
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item" (mouseleave)="hideCategories()">
+              <a class="nav-link" routerLink="/user" routerLinkActive="active">
+                <i class="fa d-inline fa-lg fa-bookmark-o"></i>User
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+</ul>
+
+  </div>
+</nav>
+</div>
+
+<div class="main-container">
+  <div *ngIf="isVisible" [ngClass]="currentClasses" (mouseleave)="hideCategories()">
+    <ul class="desktop-navBlock" *ngFor="let category of secondaryCategories">
+      <li class="secCategory">{{category.secondaryCatName}}</li>
+      <li>
+        <ul class *ngFor="let terCategory of category.tertiaryCategories">
+          <li class="terCategory">{{terCategory.categoryName}}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="py-5 text-center">
+    <router-outlet></router-outlet>
+  </div>
+</div>

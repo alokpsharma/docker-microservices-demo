@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: Customer API
+  description: This API is for customer information.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5555/v1
+  description: This is for local url.
+paths:
+  /customers:
+    get:
+      summary: Returns a list of customers.
+      description: Get the list of All Customers.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+    post:
+      summary: Creates a new customer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      description: Get the list of All Customers.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+  /customers/{_id}:
+    get:
+      summary: Returns a customer by customer id.
+      description: Find a customer by Id
+      parameters:
+        - name: _id
+          in: path
+          required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  type: string
+        404:
+          description: A customer with specified id is not present
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        membershipId:
+          type: integer
+        address:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      properties:
+        streetName:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: integer
